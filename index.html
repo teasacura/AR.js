@@ -20,17 +20,18 @@
 		<!-- new code -->
 		<a-marker markerhandler emitevents="true" id="barcode-01" type="barcode" value="1" position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
 			<a-box id="box-01" position="0 0.5 0" material="opacity: 0.5; side: double;color:red;" rotation="" scale="" visible="" geometry=""
-				event-set__enter="_event: mouseenter; _target: #boxOneText; visible: true"
-        event-set__leave="_event: mouseleave; _target: #boxOneText; visible: false">
-				      <a-text id="boxOneText" value="This is a box" align="center" color="#FFF" visible="false" position="0 0.6 0.55" rotation="-100 0 0" material="opacity: 0.2; side:double, color:black"
-              geometry="primitive: plane; width: 1.75" material="color: #333"></a-text>
+				event-set__enter="_event: mouseenter; _target: #video1;">
+        <!-- event-set__leave="_event: mouseleave; _target: #boxOneText; visible: false"> -->
+							<a-link id="video1" href="video1.html"  title="" on="mouseenter"></a-link>
+				      <!-- <a-text id="boxOneText" value="This is a box" align="center" color="#FFF" visible="false" position="0 0.6 0.55" rotation="-100 0 0" material="opacity: 0.2; side:double, color:black"
+              geometry="primitive: plane; width: 1.75" material="color: #333"></a-text> -->
 							<a-torus-knot radius="0.26" radius-tubular="0.05" position="" rotation="" scale="" visible="" material="" geometry="">
 								<a-animation attribute="rotation" to="360 0 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
 							</a-torus-knot>
 				</a-box>
 		</a-marker>
 
-		<a-marker markerhandler emitevents="true" id="barcode-02" type="barcode" value="2" position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
+		<!-- <a-marker markerhandler emitevents="true" id="barcode-02" type="barcode" value="2" position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
 			<a-box id="box-02" position="0 0.5 0" material="opacity: 0.5; side: double;color:blue;" rotation="" scale="" visible="" geometry=""
 				event-set__enter="_event: mouseenter; _target: #boxTwoText; visible: true"
         event-set__leave="_event: mouseleave; _target: #boxTwoText; visible: false">
@@ -52,7 +53,7 @@
 								<a-animation attribute="rotation" to="360 0 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
 							</a-torus-knot>
 				</a-box>
-		</a-marker>
+		</a-marker> -->
 
 
 	<!-- add a simple camera -->

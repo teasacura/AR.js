@@ -1,4 +1,12 @@
-document.documentElement.requestFullscreen();
+document.addEventListener('DOMContentLoaded', init)
+
+function init() {
+  document.documentElement.requestFullscreen();
+
+}
+
+
+
 
 //  AFRAME.registerComponent('markerhandler', {
 //     init: function () {{
