@@ -1,0 +1,36 @@
+<!-- AR.js by @jerome_etienne - github: https://github.com/jeromeetienne/ar.js - info: https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf -->
+<!-- include a-frame -->
+<script src="./aframe/examples/vendor/aframe/build/aframe.min.js"></script>
+
+<!-- include ar.js for aframe -->
+<script src='./aframe/build/aframe-ar.js'></script>
+<script>ARjs.Context.baseURL = './three.js/'</script>
+
+<a-scene>
+
+<a-marker camera preset='hiro'> <a-box id="buttRegion1" position="0 0.5 0" material="opacity: 0.5; side: double;color:red;">
+  <!-- scale="1 1 1" position="0 0 0" opacity="1" rotation="-90 0 0" width="1" height="1" color="#7BC8A4"> -->
+</a-box> </a-marker camera>
+
+<a-entity camera></a-entity>
+    <a-entity cursor="fuse: true;"
+                         position="0 0 -1"
+                         scale="0.02 0.02 0.02"
+                         geometry="primitive: ring"
+                         material="color: black; shader: flat">
+                   <a-animation begin="click" easing="ease-in" attribute="scale" dur="150"
+                                fill="forwards" from="0.02 0.02 0.02" to="0.03 0.03 0.3"></a-animation>
+                   <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
+                                fill="backwards" from="0.03 0.03 0.03" to="0.02 0.02 0.02"></a-animation>
+               </a-entity>
+</a-scene>
+
+
+<script>
+   document.querySelector('#buttRegion1').addEventListener("click", function(e)
+   {
+      console.log("buttRegion1");
+       // window.location.href = './Video1/index.html';
+       // this.style.display = 'none';
+   }, false);
+ </script>
