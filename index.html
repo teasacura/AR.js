@@ -5,6 +5,8 @@
 <script src='./aframe/build/aframe-ar.js'></script>
 <script>ARjs.Context.baseURL = './three.js/'</script>
 <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+<script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+<script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
 
 
 <!-- start the body of your page -->
@@ -19,13 +21,27 @@
 
 		<!-- new code -->
 		<a-marker markerhandler emitevents="true" id="barcode-01" type="barcode" value="1" position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
-			<a-box id="box-01" position="0 0.5 0" material="opacity: 0.5; side: double;color:red;" rotation="" scale="" visible="" geometry=""
-				event-set__enter="_event: mouseenter; _target: #video1;">
-        <!-- event-set__leave="_event: mouseleave; _target: #boxOneText; visible: false"> -->
-							<a-link id="video1" href="video1.html"  title="" on="mouseenter"></a-link>
-				      <!-- <a-text id="boxOneText" value="This is a box" align="center" color="#FFF" visible="false" position="0 0.6 0.55" rotation="-100 0 0" material="opacity: 0.2; side:double, color:black"
-              geometry="primitive: plane; width: 1.75" material="color: #333"></a-text> -->
-							<a-torus-knot radius="0.26" radius-tubular="0.05" position="" rotation="" scale="" visible="" material="" geometry="">
+			<a-box id="box-01" position="0 0.5 0" material="opacity: 0.5; side: double;color:white;" rotation="" scale="" visible="" geometry=""
+				event-set__enter="_event: mouseenter; _target: #box-01; material: opacity: 1;shader:gif;src:url(https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif);">
+							<a-torus-knot radius="0.26" radius-tubular="0.05" position="" rotation="" scale="" visible="" material="color: blue" geometry="">
+								<a-animation attribute="rotation" to="360 0 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+							</a-torus-knot>
+				</a-box>
+		</a-marker>
+
+		<a-marker markerhandler emitevents="true" id="barcode-02" type="barcode" value="2" position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
+			<a-box id="box-02" position="0 0.5 0" material="opacity: 0.5; side: double;color:white;" rotation="" scale="" visible="" geometry=""
+				event-set__enter="_event: mouseenter; _target: #box-02; material: opacity: 1;shader:gif;src:url(https://media.giphy.com/media/3o7aCPYfTsMVCsGT0Q/source.gif);">
+							<a-torus-knot radius="0.26" radius-tubular="0.05" position="" rotation="" scale="" visible="" material="color: red" geometry="">
+								<a-animation attribute="rotation" to="360 0 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+							</a-torus-knot>
+				</a-box>
+		</a-marker>
+
+		<a-marker markerhandler emitevents="true" id="barcode-03" type="barcode" value="3" position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
+			<a-box id="box-03" position="0 0.5 0" material="opacity: 0.5; side: double;color:white;" rotation="" scale="" visible="" geometry=""
+				event-set__enter="_event: mouseenter; _target: #box-03; material: opacity: 1;shader:gif;src:url(https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif);">
+							<a-torus-knot radius="0.26" radius-tubular="0.05" position="" rotation="" scale="" visible="" material="color: green" geometry="">
 								<a-animation attribute="rotation" to="360 0 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
 							</a-torus-knot>
 				</a-box>
@@ -74,128 +90,3 @@
 	</a-scene>
 
 	</body>
-
-
-
-
-	<!-- trial #1 -->
-			<!-- <a-scene arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; debugUIEnabled: false;">
-
-				<a-marker markerhandler emitevents="true" id="barcode-01" type="barcode" value="1">
-					<a-box position="0 0.5 0" rotation="0 45 0" color="#9AA3D9"
-								 event-set__enter="_event: mouseenter; color: #8FF7FF"
-								 event-set__leave="_event: mouseleave; color: #9AA3D9"></a-box>
-				</a-marker>
-
-				<a-marker type="barcode" value="2">
-					<a-box id="box-3" position="0 0.5 0" color="8BB3D9"
-						event-set__enter="_event: mouseenter; color: #8FF7FF"
-						event-set__leave="_event: mouseleave; color: #8BB3D9"></a-box>
-				</a-marker>
-
-				<a-marker type="barcode" value="3">
-					<a-box id="box-3" position="0 0.5 0" color="7CC3D9"
-						event-set__enter="_event: mouseenter; color: #8FF7FF"
-						event-set__leave="_event: mouseleave; color: #7CC3D9"></a-box>
-				</a-marker>
-
-				<a-entity camera look-controls>
-						<a-entity cursor="fuse: true; fuseTimeout: 500"
-											position="0 0 -1"
-											geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-											material="color: black; shader: flat">
-						</a-entity>
-					</a-entity> -->
-
-				<!-- </a-camera> -->
-
-
-	<!-- old code -->
-
-			<!-- Attempting to use .addEventListener -->
-					<!-- <script>
-
-							AFRAME.registerComponent('markerhandler', {
-								 init: function () {
-									 // {
-								 // Set up the tick throttling. Will check if marker is active every 500ms
-								 this.tick = AFRAME.utils.throttleTick(this.tick, 500, this);
-							 },
-
-							 tick: function(t, dt) {
-
-								 let i = 0
-
-								 if (document.querySelector("#barcode-01").object3D.visible == true) {
-									 // console.log("MARKER IS PRESENT")
-
-									 const scene = document.querySelector('#a-scene');
-									 const boxOne = document.querySelector('#box-01');
-									 // AR-Object02 = document.querySelector('#Object02');
-									 // AR-VideoScreen =  document.querySelector('#videoScreen');
-									 // console.log(boxOne);
-
-									 boxOne.addEventListener('click', function () {
-										 console.log("box-01 clickable in AR", ++i)
-										 alert("I was clicked!")
-
-									 });
-									 // AR-Object02.addEventListener('click', function () { console.log("object02 clickable in AR") });
-									 // videoScreen.addEventListener('click', function () { playPauseVideo(); console.log("Video Play Toggle") });
-									 // playing = true;
-
-								 // }
-
-								 }
-								 else {
-									 // console.log("No Marker");
-								 }
-
-						 // });
-					 		}
-
-						 });
-
-						 // AFRAME.registerComponent('raycaster-autorefresh', {
-						 //   init: function () {
-						 //     var el = this.el;
-						 //     this.el.addEventListener('model-loaded', function () {
-							// 		 document.querySelector("[cursor]").setAttribute("cursor", "fuse: false; rayOrigin: mouse;");
-						 //       var cursorEl = el.querySelector('[raycaster]');
-						 //       cursorEl.components.raycaster.refreshObjects();
-						 //     });
-						 //   }
-						 // });
-					</script> -->
-
-				<!-- handle unknown marker -->
-				<!-- <a-marker type='unknown'>
-					<a-box depth="1" height="1" width="1" position='0 0.5 0' material='opacity: 0.5; side:double; color:blue;'></a-box>
-				</a-marker> -->
-
-				<!-- handle barcode 1 -->
-				<!-- <a-marker markerhandler emitevents="true" id="barcode-01" type="barcode" value="1" position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
-					<a-box id="box-01" position="0 0.5 0" material="opacity: 0.5; side: double;color:red;" rotation="" scale="" visible="" geometry="">
-						<a-torus-knot radius="0.26" radius-tubular="0.05" position="" rotation="" scale="" visible="" material="" geometry="">
-							<a-animation attribute="rotation" to="360 0 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
-						</a-torus-knot>
-					</a-box>
-				</a-marker> -->
-
-				<!-- handle barcode 2 -->
-				<!-- <a-marker type="barcode" value="2" position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
-					<a-box id="box-2" position="0 0.5 0" material="opacity: 0.5; side: double;color:pink;" rotation="" scale="" visible="" geometry="">
-						<a-torus-knot radius="0.26" radius-tubular="0.05" position="" rotation="" scale="" visible="" material="" geometry="">
-							<a-animation attribute="rotation" to="360 0 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
-						</a-torus-knot>
-					</a-box>
-				</a-marker> -->
-
-				<!-- handle barcode 3 -->
-				<!-- <a-marker type="barcode" value="3" position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
-					<a-box id="box-3" position="0 0.5 0" material="opacity: 0.5; side: double;color:green;" rotation="" scale="" visible="" geometry="">
-						<a-torus-knot radius="0.26" radius-tubular="0.05" position="" rotation="" scale="" visible="" material="" geometry="">
-							<a-animation attribute="rotation" to="360 0 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
-						</a-torus-knot>
-					</a-box>
-				</a-marker> -->
